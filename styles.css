@@ -59,21 +59,16 @@ button {
 }
 
 .brand {
-  gap: 10px;
-  color: var(--ink);
-  font-size: 20px;
-  font-weight: 800;
+  flex: 0 0 auto;
   text-decoration: none;
 }
 
-.brand-mark {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  color: #fff;
-  border-radius: 8px;
-  background: var(--accent);
+.brand img {
+  display: block;
+  width: clamp(170px, 18vw, 250px);
+  height: 44px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .nav-links {
@@ -1020,6 +1015,11 @@ footer a {
 @media (max-width: 720px) {
   .topbar {
     align-items: flex-start;
+  }
+
+  .brand img {
+    width: 168px;
+    height: 40px;
   }
 
   .header-actions .secondary-button,
