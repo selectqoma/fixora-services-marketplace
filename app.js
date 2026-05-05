@@ -85,9 +85,9 @@ const professionals = [
     coords: [51.0259, 4.4776],
     availability: ["week"],
     tags: ["insured"],
-    services: ["Door repair", "Tiles", "Painting touch-ups"],
+    services: ["Insulation prep", "Ventilation fixes", "EPC repair list"],
     image: "https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&w=520&q=80",
-    description: "Practical repair team for move-in fixes, damaged doors, silicone renewal, small tiling, plaster touch-ups, and paint repairs."
+    description: "Practical energy-renovation repair team for EPC punch lists, ventilation fixes, insulation prep, damaged doors, silicone renewal, and small tiling."
   }
 ];
 
