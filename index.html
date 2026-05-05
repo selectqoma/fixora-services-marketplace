@@ -35,10 +35,29 @@
       <section class="search-shell" aria-label="Service search">
         <div class="search-copy">
           <p class="eyebrow">Free homeowner search for Belgium</p>
-          <h1>Find verified heating, HVAC, energy renovation, and repair companies.</h1>
+          <h1>Search verified pros or post your job and compare offers.</h1>
           <p class="intro">
-            Homeowners search for free. Companies earn trust through verified profiles, clear service areas, availability, and quote-ready listings.
+            Choose your route: browse companies yourself, or describe the job once and let matched companies compete with clear offers.
           </p>
+        </div>
+
+        <div class="choice-grid" aria-label="Choose how to use HomeProScout">
+          <article class="choice-card">
+            <i data-lucide="search-check"></i>
+            <div>
+              <h2>Find your pro</h2>
+              <p>Search by service, city, availability, reviews, insurance, warranty, and estimated price.</p>
+            </div>
+            <a class="choice-link" href="#results">Browse companies</a>
+          </article>
+          <article class="choice-card choice-card-strong">
+            <i data-lucide="clipboard-list"></i>
+            <div>
+              <h2>Post your job</h2>
+              <p>Send one structured request and compare offers from verified companies that fit the job.</p>
+            </div>
+            <a class="choice-link" href="#request">Get competing offers</a>
+          </article>
         </div>
 
         <form class="search-panel" id="searchForm">
@@ -198,19 +217,62 @@
         </div>
         <div class="request-form-wrap">
           <p class="eyebrow">Post once, compare verified companies</p>
-          <h2>Send one clear request to matched heating and renovation pros.</h2>
-          <form class="job-form">
+          <h2>Get offers from companies that match the job, location, and timing.</h2>
+          <div class="request-steps" aria-label="Request flow">
+            <span><i data-lucide="file-text"></i> Describe</span>
+            <span><i data-lucide="image-up"></i> Add photos</span>
+            <span><i data-lucide="git-compare-arrows"></i> Compare offers</span>
+          </div>
+          <form class="job-form" id="jobRequestForm">
+            <div class="form-grid">
+              <label>
+                <span>Service needed</span>
+                <select id="jobService">
+                  <option>Heating repair</option>
+                  <option>Heat pump or HVAC</option>
+                  <option>Energy renovation</option>
+                  <option>Plumbing</option>
+                  <option>Electrical</option>
+                  <option>General repairs</option>
+                </select>
+              </label>
+              <label>
+                <span>Location</span>
+                <input id="jobLocation" type="text" placeholder="Brussels, Antwerp, Leuven..." />
+              </label>
+            </div>
             <label>
               <span>What needs fixing?</span>
-              <textarea placeholder="Example: Vaillant boiler error F.28, no heating since this morning."></textarea>
+              <textarea id="jobDescription" placeholder="Example: Vaillant boiler error F.28, no heating since this morning."></textarea>
             </label>
             <div class="form-grid">
               <label>
                 <span>Property type</span>
-                <select>
+                <select id="jobProperty">
                   <option>Apartment</option>
                   <option>House</option>
                   <option>Office</option>
+                </select>
+              </label>
+              <label>
+                <span>Timing</span>
+                <select id="jobTiming">
+                  <option>As soon as possible</option>
+                  <option>Today / emergency</option>
+                  <option>This week</option>
+                  <option>This month</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-grid">
+              <label>
+                <span>Budget range</span>
+                <select id="jobBudget">
+                  <option>Need diagnosis first</option>
+                  <option>Under EUR 250</option>
+                  <option>EUR 250 - 1,000</option>
+                  <option>EUR 1,000 - 5,000</option>
+                  <option>Over EUR 5,000</option>
                 </select>
               </label>
               <label>
@@ -221,8 +283,51 @@
                 </button>
               </label>
             </div>
-            <button class="primary-button wide" type="button">Request free quotes</button>
+            <button class="primary-button wide" type="submit">Request free quotes</button>
+            <p class="form-note" id="jobFormNote">Prototype: this shows the intended request flow. The next build will connect submissions to a backend.</p>
           </form>
+        </div>
+      </section>
+
+      <section class="offer-preview" aria-label="Offer comparison preview">
+        <div>
+          <p class="eyebrow">After posting</p>
+          <h2>Offers should be comparable, not just random messages.</h2>
+        </div>
+        <div class="offer-grid">
+          <article>
+            <div class="offer-head">
+              <strong>Brussels Heat & Boiler</strong>
+              <span>Best match</span>
+            </div>
+            <p>Diagnostic visit today, boiler error check, parts quote after inspection.</p>
+            <div class="offer-meta">
+              <span>EUR 95 call-out</span>
+              <span>18 min reply</span>
+            </div>
+          </article>
+          <article>
+            <div class="offer-head">
+              <strong>AirFlow Pro Antwerp</strong>
+              <span>HVAC specialist</span>
+            </div>
+            <p>Heat pump or ventilation assessment with documented scope and warranty terms.</p>
+            <div class="offer-meta">
+              <span>EUR 120 estimate</span>
+              <span>This week</span>
+            </div>
+          </article>
+          <article>
+            <div class="offer-head">
+              <strong>VoltSecure Repairs</strong>
+              <span>Licensed</span>
+            </div>
+            <p>Electrical compliance repair list and quote for renovation-ready upgrades.</p>
+            <div class="offer-meta">
+              <span>EUR 72/hr</span>
+              <span>33 min reply</span>
+            </div>
+          </article>
         </div>
       </section>
     </main>

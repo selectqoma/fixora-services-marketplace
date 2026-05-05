@@ -114,6 +114,8 @@ const ratingValue = document.querySelector("#ratingValue");
 const sortInput = document.querySelector("#sortInput");
 const mapPanel = document.querySelector("#mapPanel");
 const companyDialog = document.querySelector("#companyDialog");
+const jobRequestForm = document.querySelector("#jobRequestForm");
+const jobFormNote = document.querySelector("#jobFormNote");
 let serviceMap;
 let mapMarkers = [];
 
@@ -359,6 +361,14 @@ document.querySelectorAll("[data-scroll-pricing]").forEach((button) => {
   button.addEventListener("click", () => {
     document.querySelector("#pricing").scrollIntoView({ behavior: "smooth" });
   });
+});
+
+jobRequestForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const service = document.querySelector("#jobService").value;
+  const location = document.querySelector("#jobLocation").value.trim() || "your area";
+  jobFormNote.textContent = `Prototype request ready: ${service} in ${location}. In the live product this would create a request and notify matched verified companies.`;
+  jobFormNote.classList.add("success");
 });
 
 document.querySelector("#resetFilters").addEventListener("click", () => {

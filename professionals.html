@@ -37,7 +37,7 @@
             Start with a free founding profile while we build traffic. Paid subscriptions begin when HomeProScout can deliver qualified local demand.
           </p>
           <div class="professional-actions">
-            <button class="primary-button" type="button" data-open-login>Start company account</button>
+            <a class="primary-link-button" href="#claim">Claim free profile</a>
             <a class="secondary-link-button light" href="#billing">How billing works</a>
           </div>
         </div>
@@ -86,6 +86,63 @@
         </article>
       </section>
 
+      <section class="claim-section" id="claim" aria-label="Claim founding profile">
+        <div class="claim-copy">
+          <p class="eyebrow">Supply launch</p>
+          <h2>Claim a founding profile before paid placements open.</h2>
+          <p>
+            The first target is 30-50 verified companies in Brussels, Antwerp, and Flemish Brabant. We need credible supply before spending on homeowner traffic.
+          </p>
+          <div class="claim-checklist">
+            <span><i data-lucide="check"></i> Company number and insurance</span>
+            <span><i data-lucide="check"></i> Services, regions, languages</span>
+            <span><i data-lucide="check"></i> Photos, certifications, reviews</span>
+          </div>
+        </div>
+        <form class="claim-form" id="claimProfileForm">
+          <div class="form-grid">
+            <label>
+              <span>Company name</span>
+              <input id="claimCompany" type="text" placeholder="Brussels Heat & Boiler" />
+            </label>
+            <label>
+              <span>Business email</span>
+              <input type="email" placeholder="owner@company.be" />
+            </label>
+          </div>
+          <div class="form-grid">
+            <label>
+              <span>Main trade</span>
+              <select>
+                <option>Heating / boiler</option>
+                <option>HVAC / heat pumps</option>
+                <option>Energy renovation</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>General repairs</option>
+              </select>
+            </label>
+            <label>
+              <span>Primary region</span>
+              <select>
+                <option>Brussels</option>
+                <option>Antwerp</option>
+                <option>Flemish Brabant</option>
+                <option>Leuven</option>
+                <option>Mechelen</option>
+                <option>Ghent</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            <span>Why should homeowners trust you?</span>
+            <textarea placeholder="Certifications, insurance, years active, emergency coverage, languages, warranty terms..."></textarea>
+          </label>
+          <button class="primary-button wide" type="submit">Claim founding profile</button>
+          <p class="form-note" id="claimFormNote">Prototype: this will become the company onboarding and verification flow.</p>
+        </form>
+      </section>
+
       <section class="billing-section" id="billing" aria-label="Billing strategy">
         <div class="billing-copy">
           <p class="eyebrow">Who pays and when</p>
@@ -132,13 +189,13 @@
             <span class="plan-label">Founding</span>
             <strong>EUR 0<small>/mo</small></strong>
             <p>Verified launch profile, review import, service area, and early quote requests while traffic is being built.</p>
-            <button class="secondary-button" type="button" data-open-login>Claim profile</button>
+            <a class="secondary-link-button" href="#claim">Claim profile</a>
           </article>
           <article class="plan featured-plan">
             <span class="plan-label">Verified Local</span>
             <strong>EUR 79<small>/mo</small></strong>
             <p>Verified badge, higher local placement, quote inbox, analytics, and a small bundle of qualified requests.</p>
-            <button class="primary-button" type="button" data-open-login>Join waitlist</button>
+            <a class="primary-link-button" href="#claim">Join waitlist</a>
           </article>
           <article class="plan">
             <span class="plan-label">Growth Territory</span>

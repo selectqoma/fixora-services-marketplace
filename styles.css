@@ -87,6 +87,7 @@ button {
 }
 
 .primary-button,
+.primary-link-button,
 .secondary-button,
 .secondary-link-button,
 .icon-button,
@@ -102,12 +103,26 @@ button {
 }
 
 .primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 18px;
   color: #fff;
   background: var(--accent);
 }
 
+.primary-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  color: #fff;
+  background: var(--accent);
+  text-decoration: none;
+}
+
 .primary-button:hover,
+.primary-link-button:hover,
 .search-button:hover {
   background: var(--accent-dark);
 }
@@ -206,7 +221,8 @@ button {
 
 .field,
 .sort-field,
-.job-form label {
+.job-form label,
+.claim-form label {
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -214,7 +230,8 @@ button {
 
 .field span,
 .sort-field span,
-.job-form span {
+.job-form span,
+.claim-form span {
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
@@ -224,8 +241,12 @@ button {
 .field input,
 .field select,
 .sort-field select,
+.job-form input,
 .job-form select,
-.job-form textarea {
+.job-form textarea,
+.claim-form input,
+.claim-form select,
+.claim-form textarea {
   width: 100%;
   min-height: 46px;
   padding: 0 12px;
@@ -279,6 +300,58 @@ button {
   margin-top: 4px;
   color: rgba(255, 255, 255, 0.78);
   font-size: 13px;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 980px;
+  margin-top: 30px;
+}
+
+.choice-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  min-height: 176px;
+  padding: 20px;
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.choice-card-strong {
+  border-color: rgba(244, 183, 64, 0.65);
+  background: #fffaf0;
+}
+
+.choice-card svg {
+  width: 28px;
+  height: 28px;
+  color: var(--accent);
+}
+
+.choice-card h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.choice-card p {
+  margin: 8px 0 0;
+  color: #475467;
+  line-height: 1.45;
+}
+
+.choice-link {
+  grid-column: 2;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 850;
+  text-decoration: none;
 }
 
 .category-band {
@@ -644,8 +717,40 @@ input[type="range"] {
   margin-top: 24px;
 }
 
+.request-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.request-steps span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 10px;
+  color: #37524c;
+  border: 1px solid #cce8e2;
+  border-radius: 8px;
+  background: #f1faf7;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.request-steps svg {
+  width: 17px;
+  height: 17px;
+}
+
 .job-form textarea {
   min-height: 132px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.claim-form textarea {
+  min-height: 118px;
   padding: 12px;
   resize: vertical;
 }
@@ -671,6 +776,88 @@ input[type="range"] {
 .wide {
   width: 100%;
   min-height: 48px;
+}
+
+.form-note {
+  margin: -4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.form-note.success {
+  padding: 12px;
+  color: var(--accent-dark);
+  border: 1px solid #9cd6ca;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  font-weight: 750;
+}
+
+.offer-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 0.56fr) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 48px);
+  align-items: start;
+  margin: 0 clamp(18px, 4vw, 56px) 46px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.offer-preview h2 {
+  margin: 0;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.08;
+}
+
+.offer-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.offer-grid article {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.offer-head,
+.offer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.offer-head strong {
+  font-size: 17px;
+}
+
+.offer-head span {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  color: var(--accent-dark);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.offer-grid p {
+  margin: 12px 0;
+  color: #475467;
+  line-height: 1.5;
+}
+
+.offer-meta {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  color: #384150;
+  font-size: 13px;
+  font-weight: 750;
 }
 
 .pricing-band {
@@ -828,6 +1015,59 @@ input[type="range"] {
 
 .professional-pricing {
   margin-top: 0;
+}
+
+.claim-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(360px, 0.9fr);
+  gap: clamp(22px, 4vw, 48px);
+  align-items: start;
+  margin: 0 clamp(18px, 4vw, 56px) 34px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.claim-copy h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.08;
+}
+
+.claim-copy p {
+  color: #475467;
+  line-height: 1.6;
+}
+
+.claim-checklist {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.claim-checklist span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #384150;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.claim-checklist svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.claim-form {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfe;
 }
 
 .billing-section {
@@ -1060,9 +1300,12 @@ footer a {
   .workspace,
   .result-layout,
   .request-band,
+  .choice-grid,
+  .offer-preview,
   .pricing-grid,
   .professional-hero,
   .professional-steps,
+  .claim-section,
   .billing-section,
   .billing-grid {
     grid-template-columns: 1fr;
@@ -1109,7 +1352,8 @@ footer a {
   }
 
   .market-strip,
-  .form-grid {
+  .form-grid,
+  .request-steps {
     grid-template-columns: 1fr;
   }
 
