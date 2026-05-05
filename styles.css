@@ -53,8 +53,7 @@ button {
 .nav-links,
 .header-actions,
 .category,
-.layout-toggle,
-.pro-actions {
+.layout-toggle {
   display: flex;
   align-items: center;
 }
@@ -334,7 +333,6 @@ button {
 .filter-head h2,
 .results-toolbar h2,
 .request-form-wrap h2,
-.pro-band h2,
 .pricing-head h2 {
   margin: 0;
 }
@@ -622,7 +620,6 @@ input[type="range"] {
 }
 
 .request-form-wrap h2,
-.pro-band h2,
 .pricing-head h2 {
   font-size: clamp(26px, 3vw, 40px);
   line-height: 1.08;
@@ -661,22 +658,6 @@ input[type="range"] {
 .wide {
   width: 100%;
   min-height: 48px;
-}
-
-.pro-band {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin: 0 clamp(18px, 4vw, 56px) 46px;
-  padding: 30px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
-}
-
-.pro-actions {
-  gap: 12px;
 }
 
 .pricing-band {
@@ -907,7 +888,6 @@ footer {
   .results-toolbar,
   .card-top,
   .card-actions,
-  .pro-band,
   footer {
     align-items: stretch;
     flex-direction: column;
@@ -921,8 +901,4 @@ footer {
     min-height: 260px;
   }
 
-  .pro-actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
 }
