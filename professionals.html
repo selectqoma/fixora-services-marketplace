@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomeProScout for Professionals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="professionals.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="HomeProScout customer search">
+        <span class="brand-mark">H</span>
+        <span>HomeProScout</span>
+      </a>
+      <nav class="nav-links" aria-label="Professional navigation">
+        <a href="index.html">Customer search</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#portal">Portal</a>
+      </nav>
+      <div class="header-actions">
+        <a class="secondary-link-button" href="index.html">Find a pro</a>
+        <button class="primary-button" type="button" data-open-login>Company login</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="professional-hero">
+        <div class="professional-copy">
+          <p class="eyebrow">For service companies</p>
+          <h1>Get found by customers already looking for heating, HVAC, repairs, and handyman help.</h1>
+          <p class="intro">
+            A separate professional portal for company profiles, service areas, availability, reviews, quote requests, and subscription management.
+          </p>
+          <div class="professional-actions">
+            <button class="primary-button" type="button" data-open-login>Start company account</button>
+            <a class="secondary-link-button light" href="#pricing">View subscriptions</a>
+          </div>
+        </div>
+        <div class="portal-preview" id="portal">
+          <div class="portal-head">
+            <span>Company dashboard</span>
+            <strong>Growth plan</strong>
+          </div>
+          <div class="portal-metrics">
+            <div>
+              <strong>46</strong>
+              <span>quote requests</span>
+            </div>
+            <div>
+              <strong>18 min</strong>
+              <span>reply speed</span>
+            </div>
+            <div>
+              <strong>4.8</strong>
+              <span>rating</span>
+            </div>
+          </div>
+          <div class="portal-list">
+            <span><i data-lucide="badge-check"></i> Verified insurance</span>
+            <span><i data-lucide="map-pin"></i> Brussels + 25 km</span>
+            <span><i data-lucide="calendar-check"></i> Emergency availability active</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="professional-steps" aria-label="How professional subscriptions work">
+        <article>
+          <i data-lucide="building-2"></i>
+          <h2>Create profile</h2>
+          <p>Add trades, service areas, certifications, insurance, photos, and team capacity.</p>
+        </article>
+        <article>
+          <i data-lucide="search-check"></i>
+          <h2>Appear in search</h2>
+          <p>Customers compare you by location, availability, rating, verified badges, and price range.</p>
+        </article>
+        <article>
+          <i data-lucide="inbox"></i>
+          <h2>Receive quotes</h2>
+          <p>Reply from one inbox with job details, photos, scheduling notes, and subscription analytics.</p>
+        </article>
+      </section>
+
+      <section class="pricing-band professional-pricing" id="pricing" aria-label="Professional subscription plans">
+        <div class="pricing-head">
+          <p class="eyebrow">Subscription model</p>
+          <h2>Companies pay monthly for visibility, verified badges, and quote tools.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="plan">
+            <span class="plan-label">Starter</span>
+            <strong>EUR 39<small>/mo</small></strong>
+            <p>Profile, reviews, service area, and quote inbox for small local operators.</p>
+            <button class="secondary-button" type="button" data-open-login>Log in to choose</button>
+          </article>
+          <article class="plan featured-plan">
+            <span class="plan-label">Growth</span>
+            <strong>EUR 89<small>/mo</small></strong>
+            <p>Higher placement, emergency availability, analytics, and unlimited quote requests.</p>
+            <button class="primary-button" type="button" data-open-login>Start Growth</button>
+          </article>
+          <article class="plan">
+            <span class="plan-label">Network</span>
+            <strong>EUR 179<small>/mo</small></strong>
+            <p>Multi-city coverage, team seats, dispatch notes, and priority verification review.</p>
+            <button class="secondary-button" type="button" data-open-login>Contact sales</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="company-dialog" id="companyDialog" aria-labelledby="companyDialogTitle">
+      <form method="dialog" class="dialog-card">
+        <button class="dialog-close" value="close" aria-label="Close company login">
+          <i data-lucide="x"></i>
+        </button>
+        <p class="eyebrow">Professional portal</p>
+        <h2 id="companyDialogTitle">Company login</h2>
+        <label>
+          <span>Business email</span>
+          <input type="email" placeholder="company@example.be" />
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" placeholder="Password" />
+        </label>
+        <button class="primary-button wide" value="login">Log in</button>
+        <div class="dialog-divider"><span>New company?</span></div>
+        <button class="secondary-button wide" value="subscribe">Create account and pick a subscription</button>
+      </form>
+    </dialog>
+
+    <footer>
+      <span>HomeProScout professional subscriptions for home service companies.</span>
+      <a href="index.html">Back to customer search</a>
+    </footer>
+  </body>
+</html>

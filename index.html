@@ -20,16 +20,15 @@
         <span>HomeProScout</span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#results">Find a pro</a>
+        <a href="#results">Search</a>
         <a href="#request">Post a job</a>
-        <a href="#pricing">For professionals</a>
+        <a href="professionals.html">For professionals</a>
       </nav>
       <div class="header-actions">
         <button class="icon-button" type="button" aria-label="Saved professionals" title="Saved professionals">
           <i data-lucide="heart"></i>
         </button>
-        <button class="secondary-button" type="button" data-open-login>Company login</button>
-        <button class="primary-button" type="button" data-scroll-pricing>Start subscription</button>
+        <a class="secondary-link-button" href="professionals.html">For professionals</a>
       </div>
     </header>
 
@@ -227,59 +226,11 @@
           </form>
         </div>
       </section>
-
-      <section class="pricing-band" id="pricing" aria-label="Professional subscription plans">
-        <div class="pricing-head">
-          <p class="eyebrow">Subscription model</p>
-          <h2>Companies pay monthly for visibility, verified badges, and quote tools.</h2>
-        </div>
-        <div class="pricing-grid">
-          <article class="plan">
-            <span class="plan-label">Starter</span>
-            <strong>EUR 39<small>/mo</small></strong>
-            <p>Profile, reviews, service area, and quote inbox for small local operators.</p>
-            <button class="secondary-button" type="button" data-open-login>Log in to choose</button>
-          </article>
-          <article class="plan featured-plan">
-            <span class="plan-label">Growth</span>
-            <strong>EUR 89<small>/mo</small></strong>
-            <p>Higher placement, emergency availability, analytics, and unlimited quote requests.</p>
-            <button class="primary-button" type="button" data-open-login>Start Growth</button>
-          </article>
-          <article class="plan">
-            <span class="plan-label">Network</span>
-            <strong>EUR 179<small>/mo</small></strong>
-            <p>Multi-city coverage, team seats, dispatch notes, and priority verification review.</p>
-            <button class="secondary-button" type="button" data-open-login>Contact sales</button>
-          </article>
-        </div>
-      </section>
     </main>
 
-    <dialog class="company-dialog" id="companyDialog" aria-labelledby="companyDialogTitle">
-      <form method="dialog" class="dialog-card">
-        <button class="dialog-close" value="close" aria-label="Close company login">
-          <i data-lucide="x"></i>
-        </button>
-        <p class="eyebrow">Professional portal</p>
-        <h2 id="companyDialogTitle">Company login</h2>
-        <label>
-          <span>Business email</span>
-          <input type="email" placeholder="company@example.be" />
-        </label>
-        <label>
-          <span>Password</span>
-          <input type="password" placeholder="Password" />
-        </label>
-        <button class="primary-button wide" value="login">Log in</button>
-        <div class="dialog-divider"><span>New company?</span></div>
-        <button class="secondary-button wide" value="subscribe">Create account and pick a subscription</button>
-      </form>
-    </dialog>
-
     <footer>
-      <span>HomeProScout concept built from marketplace patterns: searchable listings, filters, reviews, verification, location, and quote flows.</span>
-      <span>Research inputs: home service marketplaces, HVAC repair directories, and Immoweb-style listing UX.</span>
+      <span>HomeProScout customer search concept: searchable listings, filters, reviews, verification, location, and quote flows.</span>
+      <a href="professionals.html">Professional subscriptions</a>
     </footer>
   </body>
 </html>
