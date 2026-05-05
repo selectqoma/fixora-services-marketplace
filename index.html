@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fixora | Find Trusted Home Service Pros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Fixora home">
+        <span class="brand-mark">F</span>
+        <span>Fixora</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#results">Find a pro</a>
+        <a href="#request">Post a job</a>
+        <a href="#professionals">For professionals</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="Saved professionals" title="Saved professionals">
+          <i data-lucide="heart"></i>
+        </button>
+        <button class="secondary-button" type="button" data-open-login>Company login</button>
+        <button class="primary-button" type="button" data-scroll-pricing>Start subscription</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="search-shell" aria-label="Service search">
+        <div class="search-copy">
+          <p class="eyebrow">Belgium home services marketplace</p>
+          <h1>Compare verified repair, heating, HVAC, and handyman professionals.</h1>
+          <p class="intro">
+            Search like a property portal: clear filters, transparent availability, verified documents, and quote-ready service listings.
+          </p>
+        </div>
+
+        <form class="search-panel" id="searchForm">
+          <label class="field field-large">
+            <span>Service</span>
+            <select id="serviceInput" name="service">
+              <option value="all">All services</option>
+              <option value="Heating">Heating</option>
+              <option value="HVAC">HVAC</option>
+              <option value="Repairs">Repairs</option>
+              <option value="Handyman">Handyman</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Electrical">Electrical</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Location</span>
+            <input id="locationInput" type="search" placeholder="Brussels, Antwerp, Ghent..." autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Timing</span>
+            <select id="timingInput">
+              <option value="any">Any time</option>
+              <option value="today">Today</option>
+              <option value="week">This week</option>
+              <option value="emergency">Emergency 24/7</option>
+            </select>
+          </label>
+          <button class="search-button" type="submit">
+            <i data-lucide="search"></i>
+            Search
+          </button>
+        </form>
+
+        <div class="market-strip" aria-label="Marketplace statistics">
+          <div>
+            <strong>4,800+</strong>
+            <span>screened companies</span>
+          </div>
+          <div>
+            <strong>32 min</strong>
+            <span>median first reply</span>
+          </div>
+          <div>
+            <strong>92%</strong>
+            <span>jobs quoted with diagnostics</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="category-band" aria-label="Popular service categories">
+        <button class="category active" type="button" data-category="all">
+          <i data-lucide="layout-grid"></i>
+          All
+        </button>
+        <button class="category" type="button" data-category="Heating">
+          <i data-lucide="flame"></i>
+          Heating
+        </button>
+        <button class="category" type="button" data-category="HVAC">
+          <i data-lucide="wind"></i>
+          HVAC
+        </button>
+        <button class="category" type="button" data-category="Repairs">
+          <i data-lucide="wrench"></i>
+          Repairs
+        </button>
+        <button class="category" type="button" data-category="Handyman">
+          <i data-lucide="hammer"></i>
+          Handyman
+        </button>
+        <button class="category" type="button" data-category="Plumbing">
+          <i data-lucide="droplets"></i>
+          Plumbing
+        </button>
+      </section>
+
+      <section class="workspace" id="results">
+        <aside class="filters" aria-label="Filters">
+          <div class="filter-head">
+            <h2>Filters</h2>
+            <button id="resetFilters" class="text-button" type="button">Reset</button>
+          </div>
+
+          <fieldset>
+            <legend>Verification</legend>
+            <label><input class="filter" type="checkbox" value="insured" /> Insured</label>
+            <label><input class="filter" type="checkbox" value="licensed" /> License checked</label>
+            <label><input class="filter" type="checkbox" value="warranty" /> Work warranty</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Availability</legend>
+            <label><input class="availability" name="availability" type="radio" value="any" checked /> Any</label>
+            <label><input class="availability" name="availability" type="radio" value="today" /> Today</label>
+            <label><input class="availability" name="availability" type="radio" value="emergency" /> 24/7 emergency</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Minimum rating</legend>
+            <input id="ratingRange" type="range" min="3.5" max="5" value="4" step="0.1" />
+            <div class="range-row">
+              <span>3.5</span>
+              <strong id="ratingValue">4.0+</strong>
+              <span>5.0</span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Budget</legend>
+            <label><input class="budget" name="budget" type="radio" value="any" checked /> Any hourly rate</label>
+            <label><input class="budget" name="budget" type="radio" value="65" /> Up to EUR 65/hr</label>
+            <label><input class="budget" name="budget" type="radio" value="85" /> Up to EUR 85/hr</label>
+          </fieldset>
+        </aside>
+
+        <section class="results-pane" aria-live="polite">
+          <div class="results-toolbar">
+            <div>
+              <p id="resultCount" class="result-count">0 professionals</p>
+              <h2>Available professionals near you</h2>
+            </div>
+            <label class="sort-field">
+              <span>Sort</span>
+              <select id="sortInput">
+                <option value="match">Best match</option>
+                <option value="rating">Rating</option>
+                <option value="price">Lowest rate</option>
+                <option value="speed">Fastest reply</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="layout-toggle" role="tablist" aria-label="Result view">
+            <button class="toggle active" type="button" data-view="list">
+              <i data-lucide="list"></i>
+              List
+            </button>
+            <button class="toggle" type="button" data-view="map">
+              <i data-lucide="map"></i>
+              Map
+            </button>
+          </div>
+
+          <div class="result-layout">
+            <div class="listings" id="listings"></div>
+            <aside class="map-panel" id="mapPanel" aria-label="Service area map">
+              <div id="serviceMap" class="service-map"></div>
+            </aside>
+          </div>
+        </section>
+      </section>
+
+      <section class="request-band" id="request">
+        <div class="request-media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80" alt="" />
+        </div>
+        <div class="request-form-wrap">
+          <p class="eyebrow">Post once, compare quotes</p>
+          <h2>Send a structured job request to matched pros.</h2>
+          <form class="job-form">
+            <label>
+              <span>What needs fixing?</span>
+              <textarea placeholder="Example: Vaillant boiler error F.28, no heating since this morning."></textarea>
+            </label>
+            <div class="form-grid">
+              <label>
+                <span>Property type</span>
+                <select>
+                  <option>Apartment</option>
+                  <option>House</option>
+                  <option>Office</option>
+                </select>
+              </label>
+              <label>
+                <span>Photos</span>
+                <button class="upload-button" type="button">
+                  <i data-lucide="image-up"></i>
+                  Add photos
+                </button>
+              </label>
+            </div>
+            <button class="primary-button wide" type="button">Get matched quotes</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="pro-band" id="professionals">
+        <div>
+          <p class="eyebrow">For service companies</p>
+          <h2>Turn verified availability into booked subscription revenue.</h2>
+        </div>
+        <div class="pro-actions">
+          <button class="secondary-button" type="button" data-open-login>Company login</button>
+          <button class="primary-button" type="button" data-scroll-pricing>Create pro profile</button>
+        </div>
+      </section>
+
+      <section class="pricing-band" id="pricing" aria-label="Professional subscription plans">
+        <div class="pricing-head">
+          <p class="eyebrow">Subscription model</p>
+          <h2>Companies pay monthly for visibility, verified badges, and quote tools.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="plan">
+            <span class="plan-label">Starter</span>
+            <strong>EUR 39<small>/mo</small></strong>
+            <p>Profile, reviews, service area, and quote inbox for small local operators.</p>
+            <button class="secondary-button" type="button" data-open-login>Log in to choose</button>
+          </article>
+          <article class="plan featured-plan">
+            <span class="plan-label">Growth</span>
+            <strong>EUR 89<small>/mo</small></strong>
+            <p>Higher placement, emergency availability, analytics, and unlimited quote requests.</p>
+            <button class="primary-button" type="button" data-open-login>Start Growth</button>
+          </article>
+          <article class="plan">
+            <span class="plan-label">Network</span>
+            <strong>EUR 179<small>/mo</small></strong>
+            <p>Multi-city coverage, team seats, dispatch notes, and priority verification review.</p>
+            <button class="secondary-button" type="button" data-open-login>Contact sales</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="company-dialog" id="companyDialog" aria-labelledby="companyDialogTitle">
+      <form method="dialog" class="dialog-card">
+        <button class="dialog-close" value="close" aria-label="Close company login">
+          <i data-lucide="x"></i>
+        </button>
+        <p class="eyebrow">Professional portal</p>
+        <h2 id="companyDialogTitle">Company login</h2>
+        <label>
+          <span>Business email</span>
+          <input type="email" placeholder="company@example.be" />
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" placeholder="Password" />
+        </label>
+        <button class="primary-button wide" value="login">Log in</button>
+        <div class="dialog-divider"><span>New company?</span></div>
+        <button class="secondary-button wide" value="subscribe">Create account and pick a subscription</button>
+      </form>
+    </dialog>
+
+    <footer>
+      <span>Fixora concept built from marketplace patterns: searchable listings, filters, reviews, verification, location, and quote flows.</span>
+      <span>Research inputs: home service marketplaces, HVAC repair directories, and Immoweb-style listing UX.</span>
+    </footer>
+  </body>
+</html>
